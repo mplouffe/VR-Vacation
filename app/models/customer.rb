@@ -1,5 +1,8 @@
 class Customer < ApplicationRecord
 
+  belongs_to :province
+  has_many :orders
+  
   validates_presence_of   :first_name,
                           :last_name,
                           :address,

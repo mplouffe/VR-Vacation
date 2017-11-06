@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171105025535) do
+ActiveRecord::Schema.define(version: 20171106022330) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -66,6 +66,8 @@ ActiveRecord::Schema.define(version: 20171105025535) do
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "province_id"
+    t.index ["province_id"], name: "index_customers_on_province_id"
   end
 
   create_table "discounts", force: :cascade do |t|
@@ -87,6 +89,8 @@ ActiveRecord::Schema.define(version: 20171105025535) do
     t.decimal "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "event_type_id"
+    t.index ["event_type_id"], name: "index_events_on_event_type_id"
   end
 
   create_table "line_items", force: :cascade do |t|
@@ -94,6 +98,10 @@ ActiveRecord::Schema.define(version: 20171105025535) do
     t.decimal "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "order_id"
+    t.integer "package_id"
+    t.index ["order_id"], name: "index_line_items_on_order_id"
+    t.index ["package_id"], name: "index_line_items_on_package_id"
   end
 
   create_table "locations", force: :cascade do |t|
@@ -112,6 +120,8 @@ ActiveRecord::Schema.define(version: 20171105025535) do
     t.decimal "gst_rate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "customer_id"
+    t.index ["customer_id"], name: "index_orders_on_customer_id"
   end
 
   create_table "packages", force: :cascade do |t|
@@ -119,6 +129,10 @@ ActiveRecord::Schema.define(version: 20171105025535) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "category_id"
+    t.integer "location_id"
+    t.index ["category_id"], name: "index_packages_on_category_id"
+    t.index ["location_id"], name: "index_packages_on_location_id"
   end
 
   create_table "provinces", force: :cascade do |t|
@@ -134,6 +148,8 @@ ActiveRecord::Schema.define(version: 20171105025535) do
     t.decimal "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "location_id"
+    t.index ["location_id"], name: "index_souvenirs_on_location_id"
   end
 
 end

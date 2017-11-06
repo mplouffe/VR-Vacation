@@ -1,5 +1,7 @@
 class EventType < ApplicationRecord
 
-    validates_presence_of :title, :description
+  has_many :events
+
+  validates_presence_of :title, :description
     
 end
