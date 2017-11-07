@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171106022330) do
+ActiveRecord::Schema.define(version: 20171107203312) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -76,6 +76,15 @@ ActiveRecord::Schema.define(version: 20171106022330) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "event_characters", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "event_id"
+    t.integer "character_id"
+    t.index ["character_id"], name: "index_event_characters_on_character_id"
+    t.index ["event_id"], name: "index_event_characters_on_event_id"
+  end
+
   create_table "event_types", force: :cascade do |t|
     t.string "title"
     t.text "description"
@@ -116,12 +125,37 @@ ActiveRecord::Schema.define(version: 20171106022330) do
 
   create_table "orders", force: :cascade do |t|
     t.string "status"
-    t.decimal "pst_rate"
-    t.decimal "gst_rate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "customer_id"
     t.index ["customer_id"], name: "index_orders_on_customer_id"
+  end
+
+  create_table "package_discounts", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "package_id"
+    t.integer "discount_id"
+    t.index ["discount_id"], name: "index_package_discounts_on_discount_id"
+    t.index ["package_id"], name: "index_package_discounts_on_package_id"
+  end
+
+  create_table "package_events", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "event_id"
+    t.integer "package_id"
+    t.index ["event_id"], name: "index_package_events_on_event_id"
+    t.index ["package_id"], name: "index_package_events_on_package_id"
+  end
+
+  create_table "package_souvenirs", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "package_id"
+    t.integer "souvenir_id"
+    t.index ["package_id"], name: "index_package_souvenirs_on_package_id"
+    t.index ["souvenir_id"], name: "index_package_souvenirs_on_souvenir_id"
   end
 
   create_table "packages", force: :cascade do |t|
@@ -140,6 +174,9 @@ ActiveRecord::Schema.define(version: 20171106022330) do
     t.string "abbrv"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "pst_rate"
+    t.decimal "gst_rate"
+    t.decimal "hst_rate"
   end
 
   create_table "souvenirs", force: :cascade do |t|
