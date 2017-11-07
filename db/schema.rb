@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171107203312) do
+ActiveRecord::Schema.define(version: 20171107205815) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -147,15 +147,6 @@ ActiveRecord::Schema.define(version: 20171107203312) do
     t.integer "package_id"
     t.index ["event_id"], name: "index_package_events_on_event_id"
     t.index ["package_id"], name: "index_package_events_on_package_id"
-  end
-
-  create_table "package_souvenirs", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "package_id"
-    t.integer "souvenir_id"
-    t.index ["package_id"], name: "index_package_souvenirs_on_package_id"
-    t.index ["souvenir_id"], name: "index_package_souvenirs_on_souvenir_id"
   end
 
   create_table "packages", force: :cascade do |t|

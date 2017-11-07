@@ -9,9 +9,6 @@ class Package < ApplicationRecord
 
   has_many :package_discounts
   has_many :discounts, through: :package_discounts
-
-  has_many :package_souvenirs
-  has_many :souvenirs, through: :package_souvenirs
   
   validates_presence_of :name, :description
 end
