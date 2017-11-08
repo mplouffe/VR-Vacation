@@ -1,2 +1,0 @@
-class PackageSouvenir < ApplicationRecord
-end
