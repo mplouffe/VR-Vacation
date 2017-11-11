@@ -4,4 +4,6 @@ class Location < ApplicationRecord
   
   validates_presence_of :name, :description, :price
   validates_numericality_of :price, :greater_than_or_equal_to => 0
+
+  mount_uploader :postcard, PostcardUploader
 end
