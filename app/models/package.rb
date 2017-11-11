@@ -11,4 +11,6 @@ class Package < ApplicationRecord
   has_many :discounts, through: :package_discounts
   
   validates_presence_of :name, :description
+
+  mount_uploader :screenshot, ScreenshotUploader
 end
