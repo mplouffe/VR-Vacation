@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171111214032) do
+ActiveRecord::Schema.define(version: 20171111220926) do
+
+  create_table "about_contents", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.string "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -58,6 +66,20 @@ ActiveRecord::Schema.define(version: 20171111214032) do
     t.string "sprite"
   end
 
+  create_table "contact_infos", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.string "address"
+    t.string "city"
+    t.string "postal_code"
+    t.string "email"
+    t.string "phone_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "provice_id"
+    t.index ["provice_id"], name: "index_contact_infos_on_provice_id"
+  end
+
   create_table "customers", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -68,6 +90,7 @@ ActiveRecord::Schema.define(version: 20171111214032) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "province_id"
+    t.string "phone_number"
     t.index ["province_id"], name: "index_customers_on_province_id"
   end
 
