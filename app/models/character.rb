@@ -5,4 +5,5 @@ class Character < ApplicationRecord
   
   validates_presence_of :name, :description
 
+  mount_uploader :sprite, CharacterSpriteUploader
 end
