@@ -2,19 +2,50 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
-.bg {
-  background: url(asset-path('HeadlineImage.jpg')) no-repeat 50% 10%;
+$parallax_height: 650px;
+
+.parallax-bg {
   position: fixed;
   width: 100%;
-  height: 650px; /*same height as jumbotron */
+  height: $parallax_height;
   top:0;
   left:0;
   z-index: -1;
 }
 
-.jumbotron {
-  height: 650px;
-  color: white;
+.parallax-jumbotron {
+  height: $parallax_height;
   text-shadow: #444 0 1px 1px;
   background:transparent;
+  margin: 0px;
+  padding: 0px;
 }
+
+#bg-index {
+  @extend .parallax-bg;
+  background: url(asset-path('HeadlineImage.jpg')) no-repeat 50% 10%;
+}
+
+#jumbotron-index {
+  @extend .parallax-jumbotron;
+  color: white;
+}
+
+#bg-about {
+  @extend .parallax-bg;
+  background: url(asset-path('AboutImage.jpg')) no-repeat 50% 0%;
+}
+
+#jumbotron-about {
+  @extend .parallax-jumbotron;
+}
+
+#bg-contact {
+  @extend .parallax-bg;
+  background: url(asset-path('ContactImage.jpg')) no-repeat 50% 30%;
+}
+
+#jumbotron-contact {
+  @extend .parallax-jumbotron;
+}
+

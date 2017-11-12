@@ -1,2 +1,7 @@
-div.container
-	== render partial: "contact_info", collection: @contact_infos
+.bg#bg-contact
+.jumbotron#jumbotron-contact
+.container
+	.h3 Contact Us
+	.card-deck-wrapper
+		.card-deck
+			== render partial: "contact_info", collection: @contact_infos

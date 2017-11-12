@@ -8,7 +8,7 @@ class PagesController < ApplicationController
   end
 
   def contact
-    @contact_info = ContactInfo.all
+    @contact_infos = ContactInfo.includes(:province).all
   end
 
 end

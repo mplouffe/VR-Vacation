@@ -1,0 +1,16 @@
+.card
+	.card-body
+		h4.card-title = contact_info.name
+		h6.card-subitle.mb-2.text-muted
+			= contact_info.address
+			br
+			= contact_info.city
+			=< contact_info.province.abbrv
+			br
+			= contact_info.postal_code
+		p.card-text = contact_info.description
+		p.card-link
+			strong e:
+			=<> contact_info.email
+			strong ph:
+			=< contact_info.phone_number
