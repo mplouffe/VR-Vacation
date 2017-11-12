@@ -9,6 +9,9 @@
   </head>
 
   <body>
-    <%= yield %>
+  	<%= render partial: 'common/header' %>
+  	<div id="main">
+    	<%= yield %>
+    </div>
   </body>
 </html>
