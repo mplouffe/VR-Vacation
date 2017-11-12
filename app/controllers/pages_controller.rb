@@ -4,7 +4,7 @@ class PagesController < ApplicationController
   end
 
   def about
-    @about_info = AboutContent.all
+    @about_contents = AboutContent.all
   end
 
   def contact

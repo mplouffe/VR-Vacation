@@ -9,9 +9,10 @@
   </head>
 
   <body>
-  	<%= render partial: 'common/header' %>
-  	<div id="main">
-    	<%= yield %>
+    <%= render partial: 'common/header' %>
+    <div id="main" class="container">
+      <%= yield %>
     </div>
+    <%= render partial: 'common/footer' %>
   </body>
 </html>
