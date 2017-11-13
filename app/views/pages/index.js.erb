@@ -1,0 +1,2 @@
+$('#packages').html("<%= escape_javascript render(:partial => 'pages/package', :collection => @packages) %>");
+$('#paginator').html('<%= escape_javascript(paginate(@packages, remote: true).to_s) %>');

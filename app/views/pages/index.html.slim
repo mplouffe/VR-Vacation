@@ -20,11 +20,10 @@
                     == icon('shopping-cart', class: 'fa-2x')
     .row
         .card-deck-wrapper
-            .card-deck
-                == render partial: "package", collection: @packages
-hr
-
-.container
+            .card-deck#packages
+                    == render partial: "pages/package", collection: @packages
+    hr
     .row
         .col-md-12.text-center
-            == paginate @packages
+            #paginator
+                == paginate @packages, remote: true
