@@ -1,3 +1,21 @@
 .row
-	h2 = about_content.title
-	p = about_content.content
+	- if about_content.image?
+		- if about_content.image_left?
+			.row.row-bottom-padding
+				.col-sm-6.col-xs-12.dynamic-image
+					== image_tag(about_content.image, class: 'dynamic-image')
+				.col-sm-6.col-xs-12
+					h2 = about_content.title
+					p = about_content.content
+		- else
+			.row.row-bottom-padding
+				.col-sm-6.col-xs-12
+					h2 = about_content.title
+					p = about_content.content
+				.col-sm-6.col-xs-12
+					== image_tag(about_content.image, class: 'dynamic-image')
+	- else
+		.row.row-bottom-padding
+			.col-sm-12
+				h2 = about_content.title
+				p = about_content.content		
