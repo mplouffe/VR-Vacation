@@ -4,51 +4,27 @@
     p.lead Travel beyond your imagination.
 .container
     .row
-        h2 Page Content
-        p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
-            Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
-            dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
-            Aliquam in felis sit amet augue.
-        
-        p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
-            Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
-            dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
-            Aliquam in felis sit amet augue.
-        
-        p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
-            Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
-            dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
-            Aliquam in felis sit amet augue.
-        
-        p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
-            Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
-            dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
-            Aliquam in felis sit amet augue.
-    hr
+        .col-sm-12
+            nav.navbar.navbar-expand-md.navbar-light
+                button.navbar-toggler[type="button" data-toggle="collapse" data-target="#navbarForProducts" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"]
+                    span.navbar-toggler-icon
+
+                div.collapse.navbar-collapse#navbarForProducts
+                    ul.navbar-nav.mr-auto
+                        li.nav-item
+                            == link_to 'Packages', root_path, :class => "nav-link"
+                        li.nav-item
+                            == link_to 'Categories', about_path, :class => "nav-link"
+                        li.nav-item
+                            == link_to 'Search', contact_path, :class => "nav-link"
+                    == icon('shopping-cart', class: 'fa-2x')
     .row
-        h2 Page Content
-        p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
-            Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
-            dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
-            Aliquam in felis sit amet augue.
-        
-        p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
-            Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
-            dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
-            Aliquam in felis sit amet augue.
-        
-        p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
-            Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
-            dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
-            Aliquam in felis sit amet augue.
-        
-        p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
-            Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
-            dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
-            Aliquam in felis sit amet augue.
+        .card-deck-wrapper
+            .card-deck
+                == render partial: "package", collection: @packages
 hr
 
 .container
     .row
         .col-md-12.text-center
-            p The End.
+            == paginate @packages
