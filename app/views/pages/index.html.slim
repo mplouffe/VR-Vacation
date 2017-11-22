@@ -2,7 +2,7 @@
 .jumbotron#jumbotron-index
     h1.display-3 VR Vacations
     p.lead Travel beyond your imagination.
-.container
+section.container
     .row
         .col-sm-12
             nav.navbar.navbar-expand-md.navbar-light
@@ -13,10 +13,21 @@
                     ul.navbar-nav.mr-auto
                         li.nav-item
                             == link_to 'Packages', root_path, :class => "nav-link"
+                        li.nav-item.dropdown
+                            a.nav-link.dropdown-toggle#navbarDropdownMenuLink[data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"]
+                                Dropdown Categories
+                            div.dropdown-menu[aria-labelledby="navbarDropdownMenuLink"]
+                                a.dropdown-item[data-remote="true" href="/?page=1"] All
+                                a.dropdown-item[data-remote="true" href="/?page=1&category=Action"] Action
+                                a.dropdown-item[data-remote="true" href="/?page=1&category=Adventure"] Adventure
+                                a.dropdown-item[data-remote="true" href="/?page=1&category=Horror"] Horror
+                                a.dropdown-item[data-remote="true" href="/?page=1&category=Romance"] Romance
+                                a.dropdown-item[data-remote="true" href="/?page=1&category=Relaxing"] Relaxing
+                                a.dropdown-item[data-remote="true" href="/?page=1&category=Custom"] Custom
                         li.nav-item
-                            == link_to 'Categories', about_path, :class => "nav-link"
-                        li.nav-item
-                            == link_to 'Search', contact_path, :class => "nav-link"
+                            form.form-inline
+                                button.btn.btn-outline-success.my-2.my-sm-0[type="submit"] Search
+                                input.form-control.mr-sm-2[type="text" placeholder="Search"]
                     == icon('shopping-cart', class: 'fa-2x')
     .row
         .card-deck-wrapper
