@@ -26,8 +26,8 @@ section.container
                                 a.dropdown-item[data-remote="true" href="/?page=1&category=Custom"] Custom
                         li.nav-item
                             form.form-inline
-                                button.btn.btn-outline-success.my-2.my-sm-0[type="submit"] Search
-                                input.form-control.mr-sm-2[type="text" placeholder="Search"]
+                                a#search-submit.btn.btn-outline-success.my-2.my-sm-0[data-remote="true" href=""] Search
+                                input#search-input.form-control.mr-sm-2[type="text" placeholder="Search"]
                     == icon('shopping-cart', class: 'fa-2x')
     .row
         .card-deck-wrapper

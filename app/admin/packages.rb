@@ -12,6 +12,6 @@ ActiveAdmin.register Package do
       f.input :discounts, :as => :check_boxes
       f.input :events, :as => :check_boxes
     end
+    f.actions
   end
-
 end

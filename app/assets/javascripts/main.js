@@ -18,7 +18,14 @@ $(window).scroll(function(e){
 // });
 
 $(document).ready(function () {
-    $(".a").click(function(event) {
-    	console.log("sanity check");
+    $('#search-submit').click(function(e){
+    	if(!$('#search-input').val()){
+    		e.preventDefault();
+    		return;
+    	}
+    	let link = "/?page=1&search=" + $('#search-input').val();
+    	console.log(link);
+    	$('#search-submit').attr("href", link);
     });
 });
+

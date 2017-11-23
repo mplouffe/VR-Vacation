@@ -11,6 +11,7 @@ ActiveAdmin.register Event do
       f.input :screenshot
       f.input :characters, :as => :check_boxes
     end
+    f.actions
   end
 
 end
