@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171112225855) do
+ActiveRecord::Schema.define(version: 20171125074029) do
 
   create_table "about_contents", force: :cascade do |t|
     t.string "title"
@@ -59,14 +59,6 @@ ActiveRecord::Schema.define(version: 20171112225855) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "characters", force: :cascade do |t|
-    t.string "name"
-    t.text "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "sprite"
-  end
-
   create_table "contact_infos", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -102,32 +94,6 @@ ActiveRecord::Schema.define(version: 20171112225855) do
     t.decimal "amount"
   end
 
-  create_table "event_characters", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "event_id"
-    t.integer "character_id"
-    t.index ["character_id"], name: "index_event_characters_on_character_id"
-    t.index ["event_id"], name: "index_event_characters_on_event_id"
-  end
-
-  create_table "event_types", force: :cascade do |t|
-    t.string "title"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "events", force: :cascade do |t|
-    t.string "name"
-    t.text "description"
-    t.decimal "price"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "event_type_id"
-    t.string "screenshot"
-    t.index ["event_type_id"], name: "index_events_on_event_type_id"
-  end
-
   create_table "line_items", force: :cascade do |t|
     t.integer "quantity"
     t.decimal "price"
@@ -137,17 +103,6 @@ ActiveRecord::Schema.define(version: 20171112225855) do
     t.integer "package_id"
     t.index ["order_id"], name: "index_line_items_on_order_id"
     t.index ["package_id"], name: "index_line_items_on_package_id"
-  end
-
-  create_table "locations", force: :cascade do |t|
-    t.string "name"
-    t.text "description"
-    t.string "game"
-    t.string "system"
-    t.decimal "price"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "postcard"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -167,25 +122,14 @@ ActiveRecord::Schema.define(version: 20171112225855) do
     t.index ["package_id"], name: "index_package_discounts_on_package_id"
   end
 
-  create_table "package_events", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "event_id"
-    t.integer "package_id"
-    t.index ["event_id"], name: "index_package_events_on_event_id"
-    t.index ["package_id"], name: "index_package_events_on_package_id"
-  end
-
   create_table "packages", force: :cascade do |t|
     t.string "name"
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "category_id"
-    t.integer "location_id"
     t.string "screenshot"
     t.index ["category_id"], name: "index_packages_on_category_id"
-    t.index ["location_id"], name: "index_packages_on_location_id"
   end
 
   create_table "provinces", force: :cascade do |t|
