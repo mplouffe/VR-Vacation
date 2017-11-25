@@ -11,8 +11,13 @@ section.container
 
                 div.collapse.navbar-collapse#navbarForProducts
                     ul.navbar-nav.mr-auto
-                        li.nav-item
-                            == link_to 'Packages', root_path, :class => "nav-link"
+                        li.nav-item.dropdown
+                            a.nav-link.dropdown-toggle#navbarPackagesDML[data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"]
+                                Dropdown Packages
+                            div.dropdown-menu[aria-labelledby="navbarPackagesDML"]
+                                a.dropdown-item[data-remote="true" href="/?page=1"] All
+                                a.dropdown-item[data-remote="true" href="/?page=1&date=today"] New
+                                a.dropdown-item[data-remote="true" href="/?page=1&discount=sale"] On Sale
                         li.nav-item.dropdown
                             a.nav-link.dropdown-toggle#navbarDropdownMenuLink[data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"]
                                 Dropdown Categories
@@ -23,11 +28,10 @@ section.container
                                 a.dropdown-item[data-remote="true" href="/?page=1&category=Horror"] Horror
                                 a.dropdown-item[data-remote="true" href="/?page=1&category=Romance"] Romance
                                 a.dropdown-item[data-remote="true" href="/?page=1&category=Relaxing"] Relaxing
-                                a.dropdown-item[data-remote="true" href="/?page=1&category=Custom"] Custom
                         li.nav-item
-                            form.form-inline
-                                a#search-submit.btn.btn-outline-success.my-2.my-sm-0[data-remote="true" href=""] Search
+                            form.form-inline#seach-submit
                                 input#search-input.form-control.mr-sm-2[type="text" placeholder="Search"]
+                                button#search-submit-btn.btn.btn-outline-success.my-2.my-sm-0[data-remote="true" href=""] Search
                     == icon('shopping-cart', class: 'fa-2x')
     .row
         .card-deck-wrapper

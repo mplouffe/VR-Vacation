@@ -17,15 +17,3 @@ $(window).scroll(function(e){
 // 	}
 // });
 
-$(document).ready(function () {
-    $('#search-submit').click(function(e){
-    	if(!$('#search-input').val()){
-    		e.preventDefault();
-    		return;
-    	}
-    	let link = "/?page=1&search=" + $('#search-input').val();
-    	console.log(link);
-    	$('#search-submit').attr("href", link);
-    });
-});
-

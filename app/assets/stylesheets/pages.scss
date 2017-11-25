@@ -1,3 +1,24 @@
 // Place all the styles related to the Pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#package-card {
+    margin: 0px;
+    padding: 0px;
+    margin-top: 20px;
+}
+
+.card-button {
+	margin: 0px;
+	padding: 0px;
+	display:inline-block;
+}
+
+.card-details-button {
+	display: inline-block;
+}
+
+.card-cart-button {
+	display: inline-block;
+	
+}
