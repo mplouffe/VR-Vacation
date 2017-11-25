@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171125074029) do
+ActiveRecord::Schema.define(version: 20171125184007) do
 
   create_table "about_contents", force: :cascade do |t|
     t.string "title"
@@ -73,6 +73,12 @@ ActiveRecord::Schema.define(version: 20171125074029) do
     t.index ["province_id"], name: "index_contact_infos_on_province_id"
   end
 
+  create_table "content_types", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "customers", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -113,6 +119,16 @@ ActiveRecord::Schema.define(version: 20171125074029) do
     t.index ["customer_id"], name: "index_orders_on_customer_id"
   end
 
+  create_table "package_contents", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.string "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "content_type_id"
+    t.index ["content_type_id"], name: "index_package_contents_on_content_type_id"
+  end
+
   create_table "package_discounts", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -129,7 +145,9 @@ ActiveRecord::Schema.define(version: 20171125074029) do
     t.datetime "updated_at", null: false
     t.integer "category_id"
     t.string "screenshot"
+    t.integer "package_content_id"
     t.index ["category_id"], name: "index_packages_on_category_id"
+    t.index ["package_content_id"], name: "index_packages_on_package_content_id"
   end
 
   create_table "provinces", force: :cascade do |t|
