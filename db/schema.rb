@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171126003926) do
+ActiveRecord::Schema.define(version: 20171126083235) do
 
   create_table "about_contents", force: :cascade do |t|
     t.string "title"
@@ -102,21 +102,30 @@ ActiveRecord::Schema.define(version: 20171126003926) do
 
   create_table "line_items", force: :cascade do |t|
     t.integer "quantity"
-    t.decimal "price"
+    t.decimal "unit_price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "order_id"
     t.integer "package_id"
+    t.decimal "total_price"
     t.index ["order_id"], name: "index_line_items_on_order_id"
     t.index ["package_id"], name: "index_line_items_on_package_id"
   end
 
+  create_table "order_statuses", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "orders", force: :cascade do |t|
-    t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "customer_id"
+    t.integer "order_status_id"
+    t.decimal "subtotal"
     t.index ["customer_id"], name: "index_orders_on_customer_id"
+    t.index ["order_status_id"], name: "index_orders_on_order_status_id"
   end
 
   create_table "package_contents", force: :cascade do |t|

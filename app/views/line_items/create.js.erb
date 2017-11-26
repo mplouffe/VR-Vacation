@@ -1,0 +1,6 @@
+<% if @order.errors.any? || @line_item.errors.any? %>
+	alert("not valid.")
+	console.log("<%= @order.errors.full_messages %>")
+<% else %>
+	$(".cart-text").hml("<%= escape_javascript(render 'layouts/cart_text') %>")
+<% end %>

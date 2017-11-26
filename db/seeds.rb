@@ -60,3 +60,10 @@ about_contents = AboutContent.create([
 contact_infos = ContactInfo.create([
               { name: 'VR Vacations Winnipeg',          description: 'The site of our first virtual destination experience is located in the Beautiful Exchange District.',                         address: '300 Waterfront Dr.',            city: 'Winnipeg',           postal_code: 'R#B 0G5',            email: 'info@vrvactions.com',             phone_number: '204-676-2388',      province: provinces[2] },
               { name: 'VR Vacations Toronto',           description: 'Our newest location is located on Yonge St in the heart of Toronto, and features 12 state of the art vacation suites.',       address: '20 Yonge St.',                  city: 'Toronto',            postal_code: 'M5B 1S8',            email: 'info_toronto@vrvacations.com',    phone_number: '437-788-9367',      province: provinces[8] }])
+
+#ORDER_STATUSES
+order_statuses = OrderStatus.create([
+              { name: 'In Progress' },
+              { name: 'Placed' },
+              { name: 'Shipped' },
+              { name: 'Cancelled' } ])

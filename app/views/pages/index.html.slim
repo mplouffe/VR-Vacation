@@ -32,7 +32,9 @@ section.container
                             form.form-inline#seach-submit
                                 input#search-input.form-control.mr-sm-2[type="text" placeholder="Search"]
                                 button#search-submit-btn.btn.btn-outline-success.my-2.my-sm-0[data-remote="true" href=""] Search
-                    == icon('shopping-cart', class: 'fa-2x')
+                    h2.cart-text
+                        == render 'layouts/cart_text'
+                    == link_to "#{current_order.line_items.size}", cart_path, class: "btn btn-link"
     .row
         .card-deck-wrapper
             .card-deck#packages
