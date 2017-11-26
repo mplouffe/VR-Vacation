@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171125184007) do
+ActiveRecord::Schema.define(version: 20171126003926) do
 
   create_table "about_contents", force: :cascade do |t|
     t.string "title"
@@ -129,15 +129,6 @@ ActiveRecord::Schema.define(version: 20171125184007) do
     t.index ["content_type_id"], name: "index_package_contents_on_content_type_id"
   end
 
-  create_table "package_discounts", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "package_id"
-    t.integer "discount_id"
-    t.index ["discount_id"], name: "index_package_discounts_on_discount_id"
-    t.index ["package_id"], name: "index_package_discounts_on_package_id"
-  end
-
   create_table "packages", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -146,7 +137,10 @@ ActiveRecord::Schema.define(version: 20171125184007) do
     t.integer "category_id"
     t.string "screenshot"
     t.integer "package_content_id"
+    t.decimal "price"
+    t.integer "discount_id"
     t.index ["category_id"], name: "index_packages_on_category_id"
+    t.index ["discount_id"], name: "index_packages_on_discount_id"
     t.index ["package_content_id"], name: "index_packages_on_package_content_id"
   end
 
