@@ -5,15 +5,16 @@ class PagesController < ApplicationController
     @line_item = current_order.line_items.new
 
     if params.has_key?(:discount)
-      @packages = Package.includes(:discount).where("discount_id IS NOT NULL").page(params[:page]).per(6)
+      @packages = Package.includes(:discount).where("discount_id IS NOT NULL").order(:name).page(params[:page]).per(6)
     elsif params.has_key?(:date)
-      @packages = Package.includes(:discount)
+      new_date = 1.week.ago
+      @packages = Package.includes(:discount).where("packages.created_at >= ?", new_date).order(:name).page(params[:page]).per(6)
     elsif params.has_key?(:category)
-      @packages = Package.joins(:category).includes(:discount).where('categories.name == ?', params[:category]).page(params[:page]).per(6)
+      @packages = Package.joins(:category).includes(:discount).where('categories.name == ?', params[:category]).order(:name).page(params[:page]).per(6)
     elsif params.has_key?(:search)
-      @packages = Package.includes(:discount).where("name LIKE ? OR description LIKE ?", "%#{params[:search]}%", "%#{params[:search]}%").page(params[:page]).per(6)
+      @packages = Package.includes(:discount).where("name LIKE ? OR description LIKE ?", "%#{params[:search]}%", "%#{params[:search]}%").order(:name).page(params[:page]).per(6)
     else
-      @packages = Package.joins(:category).includes(:discount).where('categories.name != ?', 'Custom').page(params[:page]).per(6)
+      @packages = Package.joins(:category).includes(:discount).where('categories.name != ?', 'Custom').order(:name).page(params[:page]).per(6)
     end
   end
 
