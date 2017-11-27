@@ -16,9 +16,15 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :pages, only: [:index] do
+    member do
+      post :search
+    end
+  end
 
   get '/', to: 'pages#index'
   get 'about', to: 'pages#about', as: 'about'
   get 'contact', to: 'pages#contact', as: 'contact'
+  post 'search', to: 'pages#search'
   
 end

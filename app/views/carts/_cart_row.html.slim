@@ -1,7 +1,8 @@
-.well
+.row.line-item
 	.row
-		.col-xs-8
+		.col-xs-12
 			h4 = product.name
+	.row
 		.col-xs-4
 			== form_for line_item, remote: true do |f|
 				h4.text-right 

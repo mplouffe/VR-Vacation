@@ -1,0 +1,12 @@
+.modal-dialog
+	.modal-content
+		.modal-header
+			h4.modal-title#modalLabel Your Cart
+			button.close[type="button" data-dismiss="modal" aria-label="Close"]
+				span [aria-hidden="true"] &times
+		.modal-body#modalBody.shopping-cart
+			p
+				== @visited_count
+			= render "shopping_cart"
+		.modal-footer.total
+			= render "cart_total"
