@@ -34,5 +34,4 @@ class PagesController < ApplicationController
   def contact
     @contact_infos = ContactInfo.includes(:province).all
   end
-
 end

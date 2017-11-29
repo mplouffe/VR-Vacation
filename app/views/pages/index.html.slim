@@ -34,7 +34,7 @@ section.container
                                 button#search-submit-btn.btn.btn-outline-success.my-2.my-sm-0[data-remote="true" href=""] Search
                     h2.cart-text
                         == render 'layouts/cart_text'
-                    == link_to "#{current_order.line_items.size}", cart_path, class: "btn btn-link"
+                    == link_to "", cart_path, class: "btn btn-link"
     #package-display
         .row
             .card-deck-wrapper

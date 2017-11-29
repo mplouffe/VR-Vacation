@@ -1,21 +1,23 @@
 .row.line-item
-	.row
-		.col-xs-12
-			h4 = product.name
-	.row
-		.col-xs-4
-			== form_for line_item, remote: true do |f|
-				h4.text-right 
-					| Unit price: 
-					== number_to_currency line_item.unit_price
-				.row
-					.col-xs-4
-						== f.number_field :quantity, value: line_item.quantity.to_i, class: "form-controrl", min: 1
-						== f.hidden_field :package_id, value: line_item.package_id
-					.col-xs-8.text-right
-						.btn-group
-							== f.submit "Update Quantity", class: "btn btn-primary"
-							== link_to "Delete", line_item, {data: { confirm: "Are you sure you wish to delete this package?" }, method: :delete, remote: true, class: "btn btn-danger"}
-				hv.text-right
+	.col-lg-12
+		.row.line-item-row
+			.col-lg-6.cart-package-name
+				h4.align-self-center = product.name
+			.col-lg-6.cart-unit-price.align-self-center
+				h4.unit-price
+					=> number_to_currency line_item.unit_price
+					| per day
+		== form_for line_item, remote: true do |f|
+			== f.hidden_field :package_id, value: line_item.package_id
+			.row.line-item-row
+				.col-lg-6.cart-number-input
+					== f.number_field :quantity, value: line_item.quantity.to_i, class: "form-control", min: 1
+				.col-lg-6.update-quantity-div
+					== f.submit "Update Quantity", class: "btn btn-primary update-quantity-button"
+			.row.line-item-row
+				.col-lg-12.cart-total-label
 					| Total Price:
-					== number_to_currency line_item.total_price
+					==< number_to_currency line_item.total_price
+			.row.line-item-row
+				.col-xs-12.text-center
+					== link_to "Delete", line_item, {method: :delete, remote: true, class: "btn btn-outline-danger pull-right remove-from-cart-button"}

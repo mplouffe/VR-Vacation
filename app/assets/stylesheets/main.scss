@@ -60,3 +60,72 @@ $parallax_height: 650px;
 .row-bottom-padding {
   margin-bottom: 20px;
 }
+
+// CART CSS //
+
+.cart-number-input {
+  padding: 0px;
+  margin: 0px;
+  display: inline-block;
+  width: auto;
+  margin: auto;
+}
+
+.cart-total-label {
+  padding: 0px;
+  margin: 10px auto 10px auto;
+  display: inline-block;
+  float:right;
+  width:auto;
+  font-family: monospace;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.line-item {
+  padding: 10px;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  border-radius: 15px;
+  border: 1px solid #EEE;
+}
+
+.cart-package-name {
+  width: auto;
+  display: inline-block;
+}
+
+.cart-unit-price {
+  width: 50%;
+  display: inline-block;
+  padding: 0px;
+}
+
+.update-quantity-div {
+  width: auto;
+  display: inline-block;
+}
+
+.remove-from-cart-button {
+  display: inline-block;
+  widht: auto;
+}
+
+.unit-price {
+  font-size: 14px;
+  color: #CCC;
+  text-align: right;
+  height: auto;
+  vertical-align: middle;
+  margin: 0px;
+}
+
+.line-item-row {
+  margin-top:10px;
+
+  .total-row {
+  }
+}
+

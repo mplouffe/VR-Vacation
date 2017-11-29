@@ -1,4 +1,13 @@
 .div[data-toggle="modal" data-target="#modal"]
-	button.cart#cart-button
-		== icon('shopping-cart', class: 'fa-2x')
+	- if current_order.line_items.size > 0
+		button.cart.btn.btn-outline-success#cart-button
+			==< icon('shopping-cart')
+			span.cart-span
+				== current_order.line_items.size
+	- else
+		button.cart.btn.btn-outline#cart-button
+			==< icon('shopping-cart')
+			span.empty-cart-span
+				== current_order.line_items.size
+
 

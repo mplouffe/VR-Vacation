@@ -14,4 +14,8 @@ header#header
 				li.nav-item
 					== link_to 'Contact', contact_path, :class => "nav-link"
 			form.form-inline.my-2.my-lg-0
-				button.btn.btn-info[type="button"] Customer Login
+				button.btn.btn-info#login-button[data-toggle="modal" data-target="#modal" type="button"]
+					- if session[:current_customer_id].nil?
+						| Customer Login
+					- else
+						| Welcome here.

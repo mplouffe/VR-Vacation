@@ -20,21 +20,28 @@ $(document).ready(function () {
 
     });
 
-    console.log($('#cart-button'));
-
     $('#cart-button').click(function(event){
-        console.log("in cart button call");
         event.preventDefault();
         $.ajax({
             type: "GET",
             url: "/cart",
             success: function(data)
             {
-                console.log("successfully fetched");
-                document.getElementById("modalcontent").innerHTML = data;
+                document.getElementById("modal").innerHTML = data;
             }
         });
     });
 
+    $('#login-button').click(function(event){
+        event.preventDefault();
+        $.ajax({
+            type: "GET",
+            url: "login/login",
+            success: function(data)
+            {
+                document.getElementById("modal").innerHTML = data;
+            }
+        });
+    });
 
 });

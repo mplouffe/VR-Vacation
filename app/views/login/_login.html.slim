@@ -1,0 +1,32 @@
+.modal-dialog#modalcontent
+	.modal-content
+		- if session[:current_user_id].nil?
+			.modal-header
+				h4.modal-title#modalLabel Log In
+				button.close[type="button" data-dismiss="modal" aria-label="Close"]
+					span [aria-hidden="true"] &times
+			.modal-body#modalBody
+				form.form-inline#login-submit
+					label.form-control[for="login-username"] Username
+					input#login-username.form-control[type="text" placeholder="Username"]
+					label.form-control[for="login-password"] Password
+					input#login-password.form-control[type="password"]
+					button#login-submit-btn.btn.btn-outline-success[type="button"] Login
+			.modal-footer#modalFooter
+				label.switch
+					input#login-toggle[type="checkbox"]
+					span.slider
+
+				// have them post to two different login controller methods
+				// once logged in or registered, save their info to the session variable
+				// use the session variable to optionally fill in customer information
+		- else
+			.modal-header
+				h4.modal-title#modalLabel Welcome Here.
+				button.close[type="button" data-dismiss="modal" aria-label="Close"]
+					span [aria-hidden="true"] &times
+			.modal-body#modalBody
+				h2 You are already logged in
+				button.btn.btn-outline-info[data-target="#modalcontent"] Log out.
+			.modal-footer
+				buton.btn.btn-outline[data-dismiss="modal" aria-label="Close"] Close
