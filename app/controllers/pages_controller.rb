@@ -7,8 +7,8 @@ class PagesController < ApplicationController
     if params.has_key?(:discount)
       @packages = Package.includes(:discount).where("discount_id IS NOT NULL").order(:name).page(params[:page]).per(6)
     elsif params.has_key?(:date)
-      new_date = 1.week.ago
-      @packages = Package.includes(:discount).where("packages.created_at >= ?", new_date).order(:name).page(params[:page]).per(6)
+      new_date = 4.day.ago
+      @packages = Package.includes(:discount).where("packages.updated_at >= ?", new_date).order(:name).page(params[:page]).per(6)
     elsif params.has_key?(:category)
       @packages = Package.joins(:category).includes(:discount).where('categories.name == ?', params[:category]).order(:name).page(params[:page]).per(6)
     elsif params.has_key?(:search)

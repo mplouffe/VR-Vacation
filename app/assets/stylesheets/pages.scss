@@ -2,10 +2,14 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@function slider_box_width($height) {  
+	@return $height / 2;  
+}
+
 #package-card {
     margin: 0px;
     padding: 0px;
-    margin-top: 20px;
+    margin-top: 20px + 2;
 }
 
 .card-button {

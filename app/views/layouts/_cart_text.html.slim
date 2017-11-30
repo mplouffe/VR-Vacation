@@ -3,11 +3,11 @@
 		button.cart.btn.btn-outline-success#cart-button
 			==< icon('shopping-cart')
 			span.cart-span
-				== current_order.line_items.size
+				==< current_order.line_items.size
 	- else
 		button.cart.btn.btn-outline#cart-button
 			==< icon('shopping-cart')
 			span.empty-cart-span
-				== current_order.line_items.size
+				==< current_order.line_items.size
 
 

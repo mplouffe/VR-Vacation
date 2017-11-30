@@ -1,6 +1,6 @@
 .modal-dialog#modalcontent
 	.modal-content
-		- if session[:current_user_id].nil?
+		- if @current_user.nil?
 			#login-form
 				.modal-header
 					h4.modal-title#modalLabel Log In
@@ -9,14 +9,14 @@
 				.modal-body#modalBody
 					form.form#login-submit
 						label[for="login-username"] Username
-						input#login-username.form-control[name="login-username" type="text" placeholder="Username"]
+						input#login-username.form-control[name="login_username" type="text" placeholder="Username"]
 						label[for="login-password"] Password
-						input#login-password.form-control[name="login-password" type="password"]
+						input#login-password.form-control[name="login_pass" type="password"]
 						button#login-submit-btn.btn.btn-outline-success[type="button"] Login
 			#register-form[style="display: none;"]
 				.modal-header
 					h4.modal-title#modalRegisterLabel Register
-					button.clost[type="button" data-dismiss="modal" aria-label="Close"]
+					button.close[type="button" data-dismiss="modal" aria-label="Close"]
 						span [aria-hidden="true"] &times
 				.modal-body#modalRegisterBody
 					form.form#register-user
@@ -40,8 +40,10 @@
 								- @provinces.each do |province|
 									option = province.name
 
+						label[for="register_postal_code"]Postal Code
+						input#register-postal-code.form-control[name="register_postal_code" type="text"]
 						label[for="register_email"] @mail
-						input#register-email.form-control[name="register-email" type="text"]	
+						input#register-email.form-control[name="register_email" type="text"]	
 						button#register-submit-btn.btn.btn-outline-success[type="button"] Register			
 			
 			.modal-footer#modalFooter
@@ -49,18 +51,15 @@
 				label.switch
 					input#login-toggle[type="checkbox"]
 					span.slider
-
-
-				// have them post to two different login controller methods
-				// once logged in or registered, save their info to the session variable
-				// use the session variable to optionally fill in customer information
 		- else
 			.modal-header
-				h4.modal-title#modalLabel Welcome Here.
+				h4.modal-title#modalLabel
+					| Welcome 
+					==> @current_user['username']
 				button.close[type="button" data-dismiss="modal" aria-label="Close"]
 					span [aria-hidden="true"] &times
 			.modal-body#modalBody
 				h2 You are already logged in
-				button.btn.btn-outline-info[data-target="#modalcontent"] Log out.
+				button#logout-button.btn.btn-outline-info[data-target="#modalcontent"] Log out.
 			.modal-footer
-				buton.btn.btn-outline[data-dismiss="modal" aria-label="Close"] Close
+				buton.btn.btn-outline-primary[data-dismiss="modal" aria-label="Close"] Close

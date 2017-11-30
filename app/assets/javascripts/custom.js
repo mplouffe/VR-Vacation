@@ -61,8 +61,15 @@ $(document).ready(function () {
                         type: "POST",
                         data: $('#login-submit').serialize(),
                         url: "login/login",
-                        success: function(data) {
-                            $('#modal').modal('hide');
+                        success: function(data, status, xhr) {
+                            let ct = xhr.getResponseHeader("content-type") || "";
+
+                            if(ct.indexOf('html') > -1){
+                                document.getElementById("modal").innerHTML = data;
+                            } else if(ct.indexOf('json') > -1){
+                                $('#login-button').text('Welcome ' + data["username"]);                                
+                                $('#modal').modal('hide');
+                            }   
                         }
                     });
                 });
@@ -74,10 +81,23 @@ $(document).ready(function () {
                         data: $('#register-user').serialize(),
                         url: "login/register",
                         success: function(data){
+                            $('#login-button').text('Welcome ' + data["username"]);
                             $('#modal').modal('hide');
                         }
-                    })
-                })
+                    });
+                });
+
+                $('#logout-button').click(function(event){
+                    event.preventDefault();
+                    $.ajax({
+                        type: "POST",
+                        url: "login/logout",
+                        success: function(data){
+                            document.getElementById("modal").innerHTML = data;
+                            $('#login-button').text('Customer Login');
+                        }
+                    });
+                });
             }
         });
     });

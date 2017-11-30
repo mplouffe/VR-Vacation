@@ -15,7 +15,8 @@ header#header
 					== link_to 'Contact', contact_path, :class => "nav-link"
 			form.form-inline.my-2.my-lg-0
 				button.btn.btn-info#login-button[data-toggle="modal" data-target="#modal" type="button"]
-					- if session[:current_customer_id].nil?
+					- if session[:current_user].nil?
 						| Customer Login
 					- else
-						| Welcome here.
+						| Welcome
+						==< session[:current_user]['username']
