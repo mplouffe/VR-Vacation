@@ -1,5 +1,6 @@
 class LoginController < ApplicationController
   def login
-    render partial: 'login'
+    @provinces = Province.order(:name)
+    render partial: 'login', :provinces => @provinces
   end
 end

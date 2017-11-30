@@ -1,21 +1,50 @@
 .modal-dialog#modalcontent
 	.modal-content
 		- if session[:current_user_id].nil?
-			.modal-header
-				h4.modal-title#modalLabel Log In
-				button.close[type="button" data-dismiss="modal" aria-label="Close"]
-					span [aria-hidden="true"] &times
-			.modal-body#modalBody
-				form.form-inline#login-submit
-					label.form-control[for="login-username"] Username
-					input#login-username.form-control[type="text" placeholder="Username"]
-					label.form-control[for="login-password"] Password
-					input#login-password.form-control[type="password"]
-					button#login-submit-btn.btn.btn-outline-success[type="button"] Login
+			#login-form
+				.modal-header
+					h4.modal-title#modalLabel Log In
+					button.close[type="button" data-dismiss="modal" aria-label="Close"]
+						span [aria-hidden="true"] &times
+				.modal-body#modalBody
+					form.form#login-submit
+						label[for="login-username"] Username
+						input#login-username.form-control[type="text" placeholder="Username"]
+						label[for="login-password"] Password
+						input#login-password.form-control[type="password"]
+						button#login-submit-btn.btn.btn-outline-success[type="button"] Login
+			#register-form[style="display: none;"]
+				.modal-header
+					h4.modal-title#modalRegisterLabel Register
+					button.clost[type="button" data-dismiss="modal" aria-label="Close"]
+						span [aria-hidden="true"] &times
+				.modal-body#modalRegisterBody
+					form.form#register-user
+						label[for="register-username"] Username
+						input#register-username.form-control[type="text" placeholder="username"]
+						label[for="register-password"] Password
+						input#register-password.form-control[type="password"]
+						label[for="register-address"] Address
+						input#register-address.form-control[type="text"]
+						label[for="register-city"] City
+						input#register-city.form-control[type="text"]
+						label[for="register-province"] Address
+
+						.dropdown-menu#register-province[aria-labelledby="dropdownMenuButton"]
+							- @provinces.each do |province|
+								a.dropdown-item
+								== province.name
+
+						label[for="register-email"] @mail
+						input#register-email.form-control[type="text"]	
+						button#register-submit-btn.btn.btn-outline-success[type="button"] Register			
+			
 			.modal-footer#modalFooter
+				label#label-login-toggle[for="login-toggle"] Register
 				label.switch
 					input#login-toggle[type="checkbox"]
 					span.slider
+
 
 				// have them post to two different login controller methods
 				// once logged in or registered, save their info to the session variable
