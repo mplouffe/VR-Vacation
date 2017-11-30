@@ -22,10 +22,14 @@ Rails.application.routes.draw do
     end
   end
 
-  get '/login/login', to: 'login#login'
+  get '/login/login', to: 'login#login_form'
+  post '/login/login', to: 'login#login'
+  post '/login/register', to: 'login#register'
+  
   get '/', to: 'pages#index'
   get 'about', to: 'pages#about', as: 'about'
   get 'contact', to: 'pages#contact', as: 'contact'
   post 'search', to: 'pages#search'
+
   
 end

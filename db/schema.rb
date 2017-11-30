@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171130033844) do
+ActiveRecord::Schema.define(version: 20171130051742) do
 
   create_table "about_contents", force: :cascade do |t|
     t.string "title"
@@ -90,6 +90,7 @@ ActiveRecord::Schema.define(version: 20171130033844) do
     t.datetime "updated_at", null: false
     t.integer "province_id"
     t.string "password"
+    t.string "username"
     t.index ["province_id"], name: "index_customers_on_province_id"
   end
 

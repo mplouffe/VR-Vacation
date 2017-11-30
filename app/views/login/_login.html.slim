@@ -9,9 +9,9 @@
 				.modal-body#modalBody
 					form.form#login-submit
 						label[for="login-username"] Username
-						input#login-username.form-control[type="text" placeholder="Username"]
+						input#login-username.form-control[name="login-username" type="text" placeholder="Username"]
 						label[for="login-password"] Password
-						input#login-password.form-control[type="password"]
+						input#login-password.form-control[name="login-password" type="password"]
 						button#login-submit-btn.btn.btn-outline-success[type="button"] Login
 			#register-form[style="display: none;"]
 				.modal-header
@@ -21,22 +21,27 @@
 				.modal-body#modalRegisterBody
 					form.form#register-user
 						label[for="register-username"] Username
-						input#register-username.form-control[type="text" placeholder="username"]
+						input#register-username.form-control[name="register_username" type="text" placeholder="username"]
+						label[for="register-first-name"] First Name
+						input#register-first-name.form-control[name="register_first_name" type="text" placeholder="First"]
+						label[for="register-last-name"] Last Name
+						input#register-last-name.form-control[name="register_last_name" type="text" placeholder="Last"]
 						label[for="register-password"] Password
-						input#register-password.form-control[type="password"]
+						input#register-password.form-control[name="register_password" type="password"]
 						label[for="register-address"] Address
-						input#register-address.form-control[type="text"]
+						input#register-address.form-control[name="register_address" type="text"]
 						label[for="register-city"] City
-						input#register-city.form-control[type="text"]
-						label[for="register-province"] Address
+						input#register-city.form-control[name="register_city" type="text"]
+						label[for="register-province"] Province
 
-						.dropdown-menu#register-province[aria-labelledby="dropdownMenuButton"]
-							- @provinces.each do |province|
-								a.dropdown-item
-								== province.name
+						.form-group
+							label[for="register-province"]
+							select.form-control#register-province[name="register_province"]
+								- @provinces.each do |province|
+									option = province.name
 
-						label[for="register-email"] @mail
-						input#register-email.form-control[type="text"]	
+						label[for="register_email"] @mail
+						input#register-email.form-control[name="register-email" type="text"]	
 						button#register-submit-btn.btn.btn-outline-success[type="button"] Register			
 			
 			.modal-footer#modalFooter

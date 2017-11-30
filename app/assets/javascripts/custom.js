@@ -59,12 +59,25 @@ $(document).ready(function () {
                     event.preventDefault();
                     $.ajax({
                         type: "POST",
+                        data: $('#login-submit').serialize(),
                         url: "login/login",
                         success: function(data) {
-                            console.log("successfully pinged controller");
+                            $('#modal').modal('hide');
                         }
                     });
                 });
+
+                $('#register-submit-btn').click(function(event){
+                    event.preventDefault();
+                    $.ajax({
+                        type: "POST",
+                        data: $('#register-user').serialize(),
+                        url: "login/register",
+                        success: function(data){
+                            $('#modal').modal('hide');
+                        }
+                    })
+                })
             }
         });
     });
