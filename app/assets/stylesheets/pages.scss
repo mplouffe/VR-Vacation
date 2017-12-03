@@ -130,3 +130,21 @@ input:checked + .slider:before {
 	animation-duration: 2s;
 	animation-iteration-count: infinite;
 }
+
+.footer > .row {
+	display: block;
+}
+
+.total-label {
+	display: block;
+	
+}
+
+.total-digit {
+	margin: auto;
+}
+
+.total-line {
+	display:block;
+	width: -webkit-fill-available;
+}

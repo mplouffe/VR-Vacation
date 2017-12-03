@@ -1,0 +1,49 @@
+.row.line-item
+	.line-item-row.total-line
+		.col-xs-6
+			.pull-left.total-label Sub-Total
+		.col-xs-6
+			.cart-total-label.total-digit
+				== @cart_sub_total
+	.line-item-row.total-line
+		.col-xs-12
+			.pull-left.total-label Taxes
+	- if @hst != 0
+		.line-item-row.total-line
+			.col-xs-12
+				.pull-left.total-label HST (#{@hst * 100}%)
+				.cart-total-label.total-digit
+					== @cart_sub_total * @hst
+	- else
+		- if @pst != 0
+			.line-item-row.total-line
+				.col-xs-6
+					.pull-left.total-label PST (#{@pst * 100}%)
+				.col-xs-6
+					.cart-total-label.total-digit
+						== @cart_sub_total * @pst
+			.line-item-row.total-line
+				.col-xs-6
+					.pull-left.total-label GST (#{@gst * 100}%)
+				.col-xs-6
+					.cart-total-label.total-digit
+						== @cart_sub_total * @gst
+			.line-item-row.total-line
+				.col-xs-6
+					.pull-left.total-label Total
+				.col-xs-6
+					.cart-total-label.total-digit
+						== @cart_total
+		- else
+			.line-item-row.total-line
+				.col-xs-6
+					.pull-left.total-label GST (#{@gst * 100}%)
+				.col-xs-6
+					.cart-total-label.total-digit
+						== @cart_sub_total * @gst
+			.line-item-row.total-line
+				.col-xs-6
+					.pull-left.total-label Total
+				.col-xs-6
+					.cart-total-label.total-digit
+						== @cart_total

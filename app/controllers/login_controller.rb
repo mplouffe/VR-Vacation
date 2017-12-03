@@ -7,6 +7,7 @@ class LoginController < ApplicationController
   end
 
   def login
+    puts params.to_s
     @current_user = Customer.where("username = ? AND password = ?", params[:login_username], params[:login_pass]).take
     if(!@current_user.nil?)
       session[:current_user] = @current_user

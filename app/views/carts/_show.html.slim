@@ -6,5 +6,10 @@
 				span [aria-hidden="true"] &times
 		.modal-body#modalBody.shopping-cart
 			= render "shopping_cart"
-		.modal-footer.total
-			= render "cart_total"
+			- if !@current_user.nil?
+				= render "cart_total"
+		.modal-footer#modalFooter
+			- if @current_user.nil?
+				button.btn.btn-outline-warning#checkout-login-btn[type="button"] Register or Login to Finish Ordering
+			- else
+				button.btn.btn-outline-success#pay-now-btn[type="button"] Pay Now

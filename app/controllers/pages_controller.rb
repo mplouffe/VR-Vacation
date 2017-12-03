@@ -21,7 +21,10 @@ class PagesController < ApplicationController
   def search
     @line_item = current_order.line_items.new
 
-    if params.has_key?(:search)
+    if params.has_key?(:category)
+      @packages = Package.joins(:category).includes(:discount).where("(name LIKE ? OR description LIKE ?) AND categories.name == ?", "%#{params[:name]}%", "%#{params[:name]}%", params[:category])
+      render partial: 'search'
+    elsif params.has_key?(:search)
       @packages = Package.includes(:discount).where("name LIKE ? OR description LIKE ?", "%#{params[:search]}%", "%#{params[:search]}%").order(:name).page(params[:page]).per(6)
       render partial: 'search'
     end
