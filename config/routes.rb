@@ -22,6 +22,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resource :charges, only: [:new, :create]
+
   get '/login/login', to: 'login#login_form'
   post '/login/login', to: 'login#login'
   post '/login/register', to: 'login#register'
@@ -32,5 +34,6 @@ Rails.application.routes.draw do
   get 'contact', to: 'pages#contact', as: 'contact'
   get 'search', to: 'pages#search'
 
+  get '/package', to: 'packages#show', as: 'info'
   
 end

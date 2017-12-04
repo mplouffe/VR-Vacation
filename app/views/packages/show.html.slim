@@ -1,0 +1,17 @@
+.bg.parallax-bg[style="background: url(#{@package.screenshot}) no-repeat 50% 10%;"]
+.jumbotron#jumbotron-about
+article.container
+	h4 = @package.name
+	p = @package.description
+	.card-price
+		- if @package.discount
+			.price-orginal
+				|C$
+				= @package.price
+			.price-discount
+				|C$
+				= @package.price * (1 - @package.discount.amount)
+		- else
+			.price	 
+				| C$
+				= @package.price

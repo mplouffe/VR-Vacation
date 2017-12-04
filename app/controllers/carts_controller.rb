@@ -26,6 +26,8 @@ class CartsController < ApplicationController
 
       session[:order_total] = @cart_sub_total * (1 + @pst + @hst + @gst)
       @cart_total = @cart_sub_total * (1 + @pst + @hst + @gst)
+      @stripe_pk = Rails.configuration.stripe[:publishable_key]
+      @description = "VR Vacation Charges"
     end
 
     render partial: 'show'

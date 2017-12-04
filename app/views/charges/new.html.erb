@@ -1,0 +1,113 @@
+<%= form_tag charges_path do %>
+  <article>
+    <% if flash[:error].present? %>
+      <div id="error_explanation">
+        <p><%= flash[:error] %></p>
+      </div>
+    <% end %>
+    <div class="row line-item">
+		<div class="row line-item-row total-line">
+			<div class="col-xs-6">
+				<div class="pull-left total-label">
+					Sub-Total
+				</div>
+			</div>
+			<div class="col-xs-6">
+				<div class="cart-total-label total-digit">
+					<%= number_to_currency(@cart_sub_total) %>
+				</div>
+			</div>
+		</div>
+		<div class="row line-item-row total-line">
+			<div class="col-xs-12">
+				<div class="pull-left total-label">
+					Taxes
+				</div>
+			</div>
+		</div>
+		<% if @hst != 0 %>
+			<div class="row line-item-row total-line">
+				<div class="col-xs-12">
+					<div class="pull-left total-label">
+						HST %<%= @hst * 100 %>
+					</div>
+					<div class="cart-total-label total-digit">
+						<%= number_to_currency(@cart_sub_total * @hst) %>
+					</div>
+				</div>
+			</div>
+		<% else %>
+			<% if @pst != 0 %>
+				<div class="row line-item-row total-line">
+					<div class="col-xs-6">
+						<div class="pull-left total-label">
+							PST %<%= @pst * 100 %>
+						</div>
+					</div>
+					<div class="col-xs-6">
+						<div class="cart-total-label total-digit">
+							<%= number_to_currency(@cart_sub_total * @pst) %>
+						</div>
+					</div>
+				</div>
+				<div class="row line-item-row total-line">
+					<div class="col-xs-6">
+						<div class="pull-left total-label">
+							GST %<%= @gst * 100 %>
+						</div>
+					</div>
+					<div class="col-xs-6">	
+						<div class="cart-total-label total-digit">
+							<%= number_to_currency(@cart_sub_total * @gst) %>
+						</div>
+					</div>
+				</div>
+				<div class="row line-item-row total-line">
+					<div class="col-xs-6">
+						<div class="pull-left total-label">
+							Total
+						</div>
+					</div>
+					<div class="col-xs-6">
+						<div class="cart-total-label total-digit">
+							<%= number_to_currency(@cart_total) %>
+						</div>
+					</div>
+				</div>
+			<% else %>
+				<div class="row line-item-row total-line">
+					<div class="col-xs-6">
+						<div class="pull-left total-label">
+							GST <%= @gst * 100 %>
+						</div>
+					</div>
+					<div class="col-xs-6">	
+						<div class="cart-total-label total-digit">
+							<%= number_to_currency(@cart_sub_total * @gst) %>
+						</div>
+					</div>
+				</div>
+				<div class="row line-item-row total-line">
+					<div class="col-xs-6">
+						<div class="pull-left total-label">
+							Total
+						</div>
+					</div>
+					<div class="col-xs-6">
+						<div class="cart-total-label total-digit">
+							<%= number_to_currency(@cart_total) %>
+						</div>
+					</div>
+				</div>
+			<% end %>
+		<% end %>
+	</div>
+  </article>
+  <div class="pull-right stripe-button-div">
+	  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+	          data-key="pk_test_Itz3u0Urm8M5iX2KBIvhQWiS"
+	          data-description="<%= @description %>"
+	          data-amount="<%= @amount %>"
+	          data-locale="auto"></script>
+   </div>
+<% end %>

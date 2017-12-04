@@ -160,9 +160,6 @@ $(document).ready(function () {
 
                     $('#login-submit-btn').click(function(event){
                         event.preventDefault();
-                        
-                        console.log($('#login-submit').serialize());
-                        console.log($('#login-submit'));
 
                         $.ajax({
                             type: "POST",

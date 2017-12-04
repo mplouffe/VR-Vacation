@@ -18,7 +18,7 @@
 						| C$
 						= package.price
 			.col-sm-6.col-md-6.card-button
-				button.btn.btn-outline-info.card-details-button.pull-left Details
+				a.btn.btn-outline-info.card-details-button.pull-left href="/package?id=#{package.id}" Details
 			.col-sm-6.col-md-6.card-button
 				== form_for @line_item, remote: true do |f|
 					== f.hidden_field :package_id, value: package.id

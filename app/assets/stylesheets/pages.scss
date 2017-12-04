@@ -137,14 +137,23 @@ input:checked + .slider:before {
 
 .total-label {
 	display: block;
+	margin-left: 20px;
 	
 }
 
 .total-digit {
 	margin: auto;
+	margin-right:20px;
 }
 
 .total-line {
 	display:block;
 	width: -webkit-fill-available;
+}
+
+.stripe-button-div {
+	display:block;
+	margin-top: 20px;
+	margin-right: 20px;
+	height: 100px;
 }
